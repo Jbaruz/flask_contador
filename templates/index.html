@@ -1,12 +1,37 @@
 {% extends "base.html" %}
 {% block titulo %} Login {% endblock %}
+
 {% block contenido %}
+    <div class="container mt-5">
+        <h1>Counter </h1>
+        <p>{{session['counter']}} times</p>
 
-
-<div class="container mt-5">
-    <h1>Counter </h1>
-    <p>{{session['counter']}} times</p>
-</div>
-
+        <div class="container text-center">
+            <div class="row justify-content-start">
+                <div class="col">
+                    <form action="/count_by_two" method="get">
+                        <button type="submit" class="btn btn-primary">Count by 2</button>
+        ©            </form>
+                </div>
+                <div class="col">
+                    <form action="/destroy_session" method="get">
+                        <button type="submit" class="btn btn-danger">restart counter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="row mt-5">
+                    <form action="/add_by" method="POST">
+                        <input type="number" name="counter" id="counter" placeholder="numero">
+                        <button type="submit" class="btn btn-warning">Add number</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <h2>Number of visits</h2>
+                <p>You have visited this page:{{session['visits']}}</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
